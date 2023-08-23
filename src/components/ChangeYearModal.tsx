@@ -36,6 +36,10 @@ export type ChangeYearModalProps = {
      * {@link https://github.com/react-native-modal/react-native-modal/blob/master/src/modal.tsx}
      */
     changeYearModalProps?: Omit<ModalProps, 'children'>;
+    
+    customUpIcon?: React.ReactNode;
+    
+    customDownIcon?: React.ReactNode;
 }
 
 /**
@@ -48,7 +52,7 @@ export type ChangeYearModalProps = {
  * @param {ChangeYearModalProps.changeYearModalProps} changeYearModalProps - Is a prop that extends the `ModalProps` from `react-native-modal` library.
  * @returns {JSX.Element} Returns a JSX.Element.
  */
-const ChangeYearModal: FC<ChangeYearModalProps> = ({ colorOptions, dismiss, displayTime, isVisible, setDisplayTime, changeYearModalProps }: ChangeYearModalProps) => {
+const ChangeYearModal: FC<ChangeYearModalProps> = ({ colorOptions, dismiss, displayTime, isVisible, setDisplayTime, changeYearModalProps, customUpIcon, customDownIcon }: ChangeYearModalProps) => {
     const { primary, backgroundColor } = colorOptions
     const [year, setYear] = useState(displayTime.getFullYear())
     const onDismiss = () => {
@@ -74,7 +78,11 @@ const ChangeYearModal: FC<ChangeYearModalProps> = ({ colorOptions, dismiss, disp
                     onPress={() => { setYear(prev => prev - 1) }}
                     style={styles.btn}
                 >
-                    <MDicon name={'keyboard-arrow-up'} size={48} color={primary} />
+                    {
+                        customUpIcon ?
+                        customUpIcon :
+                        <MDicon name={'keyboard-arrow-up'} size={48} color={primary} />
+                    }
                     <Text style={styles.prevYearText}>{year - 1}</Text>
                 </TouchableOpacity>
                 <Text style={[styles.yearText, { color: primary }]}>{year}</Text>
@@ -83,7 +91,11 @@ const ChangeYearModal: FC<ChangeYearModalProps> = ({ colorOptions, dismiss, disp
                     style={styles.btn}
                 >
                     <Text style={styles.nextYearText}>{year + 1}</Text>
-                    <MDicon name={'keyboard-arrow-down'} size={48} color={primary} />
+                    {
+                        customDownIcon ?
+                        customDownIcon :
+                        <MDicon name={'keyboard-arrow-down'} size={48} color={primary} />
+                    }
                 </TouchableOpacity>
             </View>
         </Modal>
