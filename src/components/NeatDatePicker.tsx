@@ -27,7 +27,11 @@ const NeatDatePicker = ({
     onCancel, onConfirm,
     startDate,
     chooseYearFirst,
-    withoutModal
+    withoutModal,
+    customPrevIcon,
+    customNextIcon,
+    customUpIcon,
+    customDownIcon,
 }: NeatDatePickerProps) => {
 
     // displayTime defines which month is going to be shown onto the screen
@@ -195,7 +199,8 @@ const NeatDatePicker = ({
                     colorOptions, chooseYearFirst,
                     daysArray, btnDisabled,
                     displayTime, setDisplayTime,
-                    output, setOutput
+                    output, setOutput, customPrevIcon,
+                    customNextIcon, customUpIcon, customDownIcon,
                 }}
             />
         </Modal>
