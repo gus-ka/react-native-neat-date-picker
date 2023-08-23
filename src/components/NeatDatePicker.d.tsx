@@ -154,4 +154,20 @@ export type NeatDatePickerProps = {
    * If true, the date picker will be displayed directly instead of being placed in a modal.
    */
   withoutModal?: boolean;
+  /**
+   * If empty, the default icon will be used.
+   */
+  customPrevIcon?: React.ReactNode;
+  /**
+   * If empty, the default icon will be used.
+   */
+  customNextIcon?: React.ReactNode;
+  /**
+   * If empty, the default icon will be used.
+   */
+  customUpIcon?: React.ReactNode;
+  /**
+   * If empty, the default icon will be used.
+   */
+  customDownIcon?: React.ReactNode;
 }
