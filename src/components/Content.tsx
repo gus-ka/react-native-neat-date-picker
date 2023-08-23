@@ -17,7 +17,8 @@ const Content = ({
   colorOptions, chooseYearFirst,
   daysArray, btnDisabled,
   displayTime, setDisplayTime,
-  output, setOutput
+  output, setOutput, customPrevIcon,
+  customNextIcon, customUpIcon, customDownIcon,
 }: any) => {
   const [showChangeYearModal, setShowChangeYearModal] = useState(chooseYearFirst || false)
 
@@ -43,7 +44,11 @@ const Content = ({
 
         {/* last month */}
         <TouchableOpacity style={styles.changeMonthTO} onPress={onPrev} disabled={btnDisabled} >
-          <MDicon name={'keyboard-arrow-left'} size={32} color={headerTextColor} />
+          {
+            customPrevIcon ? 
+            customPrevIcon :
+            <MDicon name={'keyboard-arrow-left'} size={32} color={headerTextColor} />
+          }
         </TouchableOpacity>
 
         {/* displayed year and month */}
@@ -56,7 +61,11 @@ const Content = ({
 
         {/* next month */}
         <TouchableOpacity style={styles.changeMonthTO} onPress={onNext} disabled={btnDisabled} >
-          <MDicon name={'keyboard-arrow-right'} size={32} color={headerTextColor} />
+          {
+            customNextIcon ?
+            customNextIcon :
+            <MDicon name={'keyboard-arrow-right'} size={32} color={headerTextColor} />
+          }
         </TouchableOpacity>
       </View>
 
@@ -106,6 +115,8 @@ const Content = ({
         dismiss={() => { setShowChangeYearModal(false) }}
         displayTime={displayTime}
         setDisplayTime={setDisplayTime}
+        customUpIcon={customUpIcon}
+        customDownIcon={customDownIcon}
         colorOptions={{
           primary: changeYearModalColor,
           backgroundColor
